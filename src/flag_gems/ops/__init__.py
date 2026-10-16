@@ -565,8 +565,10 @@ from flag_gems.ops.clamp import (
 )
 from flag_gems.ops.clamp_max import clamp_max, clamp_max_  # noqa: F401
 from flag_gems.ops.clip import clip, clip_
+from flag_gems.ops.coalesce import coalesce
 from flag_gems.ops.col2im import col2im
 from flag_gems.ops.col_indices import col_indices
+from flag_gems.ops.col_indices_copy import col_indices_copy, col_indices_copy_out
 from flag_gems.ops.column_stack import column_stack, column_stack_out
 from flag_gems.ops.concat import concat
 from flag_gems.ops.concatenate import concatenate
@@ -583,6 +585,7 @@ from flag_gems.ops.conv_tbc_backward import conv_tbc_backward
 from flag_gems.ops.conv_transpose1d import conv_transpose1d
 from flag_gems.ops.conv_transpose2d import conv_transpose2d
 from flag_gems.ops.conv_transpose3d import conv_transpose3d
+from flag_gems.ops.convolution import convolution
 from flag_gems.ops.convolution_backward_overrideable import (
     convolution_backward_overrideable,
     convolution_backward_overrideable_out,
@@ -625,6 +628,7 @@ from flag_gems.ops.det import det
 from flag_gems.ops.detach_copy import detach_copy
 from flag_gems.ops.diag import diag
 from flag_gems.ops.diag_embed import diag_embed
+from flag_gems.ops.diagflat import run as diagflat
 from flag_gems.ops.diagonal import diagonal_backward
 from flag_gems.ops.diagonal_copy import diagonal_copy
 from flag_gems.ops.diagonal_scatter import diagonal_scatter
@@ -691,6 +695,7 @@ from flag_gems.ops.feature_alpha_dropout_ import feature_alpha_dropout_
 from flag_gems.ops.feature_dropout import feature_dropout, feature_dropout_
 from flag_gems.ops.fft import fft
 from flag_gems.ops.fft_irfftn import fft_irfftn
+from flag_gems.ops.fft_rfft import fft_rfft
 from flag_gems.ops.fill import (
     fill_scalar,
     fill_scalar_,
@@ -803,6 +808,9 @@ from flag_gems.ops.hardswish_backward import hardswish_backward
 from flag_gems.ops.hardtanh import hardtanh, hardtanh_out
 from flag_gems.ops.hardtanh_ import hardtanh_
 from flag_gems.ops.hardtanh_backward import hardtanh_backward
+from flag_gems.ops.has_same_storage_numel import (
+    _has_same_storage_numel as has_same_storage_numel,
+)
 from flag_gems.ops.hash_tensor import hash_tensor
 from flag_gems.ops.heaviside import heaviside
 from flag_gems.ops.heaviside_ import heaviside_
@@ -881,12 +889,14 @@ from flag_gems.ops.lift_fresh import lift_fresh
 from flag_gems.ops.lift_fresh_copy import lift_fresh_copy, lift_fresh_copy_out
 from flag_gems.ops.linalg__powsum import linalg__powsum
 from flag_gems.ops.linalg_cholesky import linalg_cholesky
+from flag_gems.ops.linalg_cholesky_ex import linalg_cholesky_ex
 from flag_gems.ops.linalg_cond import linalg_cond, linalg_cond_p_str
 from flag_gems.ops.linalg_cross import linalg_cross, linalg_cross_out
 from flag_gems.ops.linalg_det import linalg_det, linalg_det_out
 from flag_gems.ops.linalg_eig import linalg_eig
 from flag_gems.ops.linalg_eigh import linalg_eigh
 from flag_gems.ops.linalg_eigvals import linalg_eigvals, linalg_eigvals_out
+from flag_gems.ops.linalg_eigvalsh import linalg_eigvalsh, linalg_eigvalsh_out
 from flag_gems.ops.linalg_householder_product import linalg_householder_product
 from flag_gems.ops.linalg_inv_ex import linalg_inv_ex
 from flag_gems.ops.linalg_ldl_factor import ldl_factor
@@ -1486,6 +1496,7 @@ from flag_gems.ops.upsample_trilinear3d_backward import upsample_trilinear3d_bac
 from flag_gems.ops.value_selecting_reduction_backward import (
     value_selecting_reduction_backward,
 )
+from flag_gems.ops.values_copy import values_copy, values_copy_out
 from flag_gems.ops.vander import vander
 from flag_gems.ops.var import var, var_correction, var_dim
 from flag_gems.ops.var_mean import var_mean
@@ -2027,8 +2038,11 @@ __all__ = [
     "clamp_tensor_",
     "clip",
     "clip_",
+    "coalesce",
     "col2im",
     "col_indices",
+    "col_indices_copy",
+    "col_indices_copy_out",
     "column_stack",
     "column_stack_out",
     "concat",
@@ -2047,6 +2061,7 @@ __all__ = [
     "conv_transpose1d",
     "conv_transpose2d",
     "conv_transpose3d",
+    "convolution",
     "convolution_backward_overrideable",
     "convolution_backward_overrideable_out",
     "convolution_overrideable",
@@ -2097,6 +2112,7 @@ __all__ = [
     "detach_copy",
     "diag",
     "diag_embed",
+    "diagflat",
     "diagonal_backward",
     "diagonal_copy",
     "diagonal_scatter",
@@ -2165,6 +2181,7 @@ __all__ = [
     "feature_dropout_",
     "fft",
     "fft_irfftn",
+    "fft_rfft",
     "fill_diagonal_",
     "fill_scalar",
     "fill_scalar_",
@@ -2281,6 +2298,7 @@ __all__ = [
     "hardtanh_",
     "hardtanh_backward",
     "hardtanh_out",
+    "has_same_storage_numel",
     "hash_tensor",
     "heaviside",
     "heaviside_",
@@ -2381,6 +2399,7 @@ __all__ = [
     "lift_out",
     "linalg__powsum",
     "linalg_cholesky",
+    "linalg_cholesky_ex",
     "linalg_cond",
     "linalg_cond_p_str",
     "linalg_cross",
@@ -2391,6 +2410,8 @@ __all__ = [
     "linalg_eigh",
     "linalg_eigvals",
     "linalg_eigvals_out",
+    "linalg_eigvalsh",
+    "linalg_eigvalsh_out",
     "linalg_householder_product",
     "linalg_inv_ex",
     "linalg_ldl_solve",
@@ -3014,6 +3035,8 @@ __all__ = [
     "upsample_trilinear3d",
     "upsample_trilinear3d_backward",
     "value_selecting_reduction_backward",
+    "values_copy",
+    "values_copy_out",
     "vander",
     "var",
     "var_correction",
