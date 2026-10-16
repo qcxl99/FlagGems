@@ -111,7 +111,6 @@ CUSTOMIZED_AUTOGRAD_OPS = (
     "relu6",
     "repeat_interleave.self_int",
     "repeat_interleave.self_Tensor",
-    "resolve_conj",
     "resolve_neg",
     "router_gemm",
     "selu",

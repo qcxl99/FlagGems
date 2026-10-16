@@ -53,19 +53,6 @@ ops:
   - Reduction
   stages:
   - alpha: '5.5'
-- id: _conj
-  description: 'The private conjugate primitive backing ``torch.conj`` and
-    ``torch._conj``. Raises on non-complex inputs.
-    '
-  for:
-  - _conj
-  labels:
-  - aten
-  - KernelGen
-  kind:
-  - Math
-  stages:
-  - alpha: '5.4'
 - id: _conj_physical
   description: 'Computes the element-wise conjugate of the given `input` tensor as
     a physical (non-view) tensor. For non-complex dtypes the input is returned unchanged.
@@ -10756,38 +10743,6 @@ ops:
   - Math
   stages:
   - alpha: '5.4'
-- id: lift
-  description: 'Returns self tensor. Used within compiled graphs to lift
-
-    tensors out of the graph or modify autograd metadata.
-
-    '
-  for:
-  - lift
-  - lift.out
-  labels:
-  - aten
-  - KernelGen
-  kind:
-  - Tensor
-  stages:
-  - alpha: '5.4'
-- id: lift_fresh
-  description: 'Returns a fresh tensor holding the same values as the input, used
-    to
-
-    lift constants into a compiled graph.
-
-    '
-  for:
-  - lift_fresh
-  labels:
-  - aten
-  - KernelGen
-  kind:
-  - Tensor
-  stages:
-  - alpha: '5.4'
 - id: lift_fresh_copy
   description: 'Creates a new, independent copy of a tensor within a compiled graph.
 
@@ -10802,19 +10757,6 @@ ops:
   stages:
   - beta: '5.0'
   - stable: '5.3'
-- id: lift_out
-  description: 'Out-of-place variant of lift that copies self to the out tensor.
-
-    '
-  for:
-  - lift_out
-  labels:
-  - aten
-  - KernelGen
-  kind:
-  - Tensor
-  stages:
-  - alpha: '5.4'
 - id: linalg__powsum
   description: 'Computes the sum of the absolute input values raised to `ord` over
     the requested dimensions, without applying the final norm root.
@@ -16081,22 +16023,6 @@ ops:
   - Math
   stages:
   - alpha: '5.4'
-- id: resolve_conj
-  description: 'Returns a new tensor with materialized conjugation if `input`''s conjugate
-    bit is set to True,
-
-    else returns `input`. The output tensor will always have its conjugate bit set
-    to False.
-
-    '
-  for:
-  - resolve_conj
-  labels:
-  - aten
-  kind:
-  - Science
-  stages:
-  - stable: '2.1'
 - id: resolve_neg
   description: 'Returns a new tensor with materialized negation if `input`''s negative
     bit is set to True,

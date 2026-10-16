@@ -318,7 +318,6 @@ CUSTOMIZED_UNUSED_OPS = (
     "replication_pad1d",
     "replication_pad1d_out",
     "replication_pad3d",
-    "resolve_conj",
     "resolve_neg",
     "rms_norm",
     "roll",

@@ -17,7 +17,6 @@ from torch_musa import current_device, get_device_capability
 from ._amp_foreach_non_finite_check_and_unscale_ import (
     _amp_foreach_non_finite_check_and_unscale_,
 )
-from ._conj import _conj
 from ._functional_sym_constrain_range_for_size import (
     _functional_sym_constrain_range_for_size,
 )
@@ -86,8 +85,6 @@ from .isin import isin
 from .kthvalue import kthvalue
 from .lcm import lcm
 from .lcm_ import lcm_
-from .lift_fresh import lift_fresh
-from .lift_out import lift_out
 from .linalg_cholesky import linalg_cholesky
 from .linalg_ldl_factor_ex import ldl_factor_ex
 from .linalg_ldl_solve import linalg_ldl_solve
@@ -170,7 +167,6 @@ from .zeros_like import zeros_like
 __all__ = [
     "_adaptive_avg_pool2d_backward",
     "_amp_foreach_non_finite_check_and_unscale_",
-    "_conj",
     "_functional_sym_constrain_range_for_size",
     "_index_put_impl_",
     "_masked_scale",
@@ -251,8 +247,6 @@ __all__ = [
     "lcm",
     "lcm_",
     "ldl_factor_ex",
-    "lift_fresh",
-    "lift_out",
     "linalg_cholesky",
     "linalg_ldl_solve",
     "linear",
@@ -385,9 +379,7 @@ if get_device_capability(current_device())[0] >= 3:
             "_upsample_bilinear2d_aa",
             "ldl_factor_ex",
             "_thnn_fused_lstm_cell_backward_impl",
-            "lift_out",
             "lcm_",
-            "lift_fresh",
             "addmv_",
             "ormqr",
             "cholesky_inverse",
@@ -424,8 +416,6 @@ if get_device_capability(current_device())[0] >= 3:
             "kthvalue",
             "lcm",
             "lcm_",
-            "lift_fresh",
-            "lift_out",
             "ldl_factor_ex",
             "log2_",
             "mvlgamma",

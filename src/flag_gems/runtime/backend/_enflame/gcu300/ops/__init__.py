@@ -146,7 +146,6 @@ from .kron import kron
 from .layernorm import layer_norm, layer_norm_backward
 from .le import le, le_scalar
 from .lerp import lerp_scalar, lerp_scalar_, lerp_tensor, lerp_tensor_
-from .lift_fresh import lift_fresh
 from .lift_fresh_copy import lift_fresh_copy, lift_fresh_copy_out
 from .linear import linear
 from .linspace import linspace
@@ -452,7 +451,6 @@ __all__ = [
     "lerp_scalar_",
     "lerp_tensor",
     "lerp_tensor_",
-    "lift_fresh",
     "lift_fresh_copy",
     "lift_fresh_copy_out",
     "linear",

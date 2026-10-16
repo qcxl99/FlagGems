@@ -20,7 +20,6 @@ from ._amp_foreach_non_finite_check_and_unscale_ import (
 )
 from ._batch_norm_impl_index import batch_norm_impl_index as _batch_norm_impl_index
 from ._batch_norm_no_update import _batch_norm_no_update
-from ._conj import _conj  # noqa: F401
 from ._dyn_quant_pack_4bit_weight import _dyn_quant_pack_4bit_weight
 from ._embedding_bag_dense_backward import _embedding_bag_dense_backward
 from ._embedding_bag_per_sample_weights_backward import (  # noqa: F401
@@ -378,9 +377,7 @@ from .lerp import lerp_scalar, lerp_scalar_, lerp_tensor, lerp_tensor_
 from .less_equal import less_equal, less_equal_scalar
 from .less_equal_ import less_equal_, less_equal_scalar_
 from .lgamma import lgamma, lgamma_
-from .lift_fresh import lift_fresh  # noqa: F401
 from .lift_fresh_copy import lift_fresh_copy
-from .lift_out import lift_out  # noqa: F401
 from .linalg_cholesky import linalg_cholesky
 from .linalg_cross import linalg_cross, linalg_cross_out
 from .linalg_det import linalg_det, linalg_det_out
@@ -562,7 +559,6 @@ from .replication_pad3d import replication_pad3d  # noqa: F401
 from .replication_pad3d_backward import replication_pad3d_backward  # noqa: F401
 from .resize import resize, resize_
 from .resize_output import _resize_output, _resize_output_  # noqa: F401
-from .resolve_conj import resolve_conj
 from .resolve_neg import resolve_neg
 from .rms_norm import rms_norm, rms_norm_backward, rms_norm_forward
 from .rnn_relu import rnn_relu
@@ -753,7 +749,6 @@ __all__ = [
     "_batch_norm_no_update",
     "_cdist_backward",
     "_chunk_cat",
-    "_conj",
     "_conv_depthwise2d",
     "_dyn_quant_pack_4bit_weight",
     "_embedding_bag_dense_backward",
@@ -1344,7 +1339,6 @@ __all__ = [
     "replication_pad2d_out",
     "resize",
     "resize_",
-    "resolve_conj",
     "resolve_neg",
     "rms_norm",
     "rms_norm_backward",

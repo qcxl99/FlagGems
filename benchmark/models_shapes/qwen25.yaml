@@ -112,7 +112,6 @@ sort:
 # embedding:
 # cumsum:
 # resolve_neg:
-# resolve_conj:
 # ones:
 # zeros:
 # full:

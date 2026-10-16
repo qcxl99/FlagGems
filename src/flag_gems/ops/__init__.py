@@ -46,7 +46,6 @@ from flag_gems.ops._compute_linear_combination import (
     _compute_linear_combination,
     _compute_linear_combination_out,
 )
-from flag_gems.ops._conj import _conj
 from flag_gems.ops._conj_copy import _conj_copy, _conj_copy_out
 from flag_gems.ops._conj_physical import _conj_physical, _conj_physical_out
 from flag_gems.ops._convert_weight_to_int4pack import _convert_weight_to_int4pack
@@ -884,8 +883,6 @@ from flag_gems.ops.less_ import less_, less_scalar_
 from flag_gems.ops.less_equal import less_equal, less_equal_scalar
 from flag_gems.ops.less_equal_ import less_equal_, less_equal_scalar_
 from flag_gems.ops.lgamma_ import lgamma, lgamma_
-from flag_gems.ops.lift import lift, lift_out
-from flag_gems.ops.lift_fresh import lift_fresh
 from flag_gems.ops.lift_fresh_copy import lift_fresh_copy, lift_fresh_copy_out
 from flag_gems.ops.linalg__powsum import linalg__powsum
 from flag_gems.ops.linalg_cholesky import linalg_cholesky
@@ -1206,7 +1203,6 @@ from flag_gems.ops.replication_pad3d import replication_pad3d
 from flag_gems.ops.replication_pad3d_backward import replication_pad3d_backward
 from flag_gems.ops.resize import resize, resize_
 from flag_gems.ops.resize_as import resize_as, resize_as_
-from flag_gems.ops.resolve_conj import resolve_conj
 from flag_gems.ops.resolve_neg import resolve_neg
 from flag_gems.ops.rms_norm import rms_norm, rms_norm_backward, rms_norm_forward
 from flag_gems.ops.rms_norm_w8a16_fp8 import rms_norm_w8a16_fp8
@@ -1560,7 +1556,6 @@ __all__ = [
     "_coalesced_",
     "_compute_linear_combination",
     "_compute_linear_combination_out",
-    "_conj",
     "_conj_copy",
     "_conj_copy_out",
     "_conj_physical",
@@ -2392,11 +2387,8 @@ __all__ = [
     "less_scalar_",
     "lgamma",
     "lgamma_",
-    "lift",
-    "lift_fresh",
     "lift_fresh_copy",
     "lift_fresh_copy_out",
-    "lift_out",
     "linalg__powsum",
     "linalg_cholesky",
     "linalg_cholesky_ex",
@@ -2734,7 +2726,6 @@ __all__ = [
     "resize_",
     "resize_as",
     "resize_as_",
-    "resolve_conj",
     "resolve_neg",
     "rms_norm",
     "rms_norm_backward",

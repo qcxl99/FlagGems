@@ -15,7 +15,6 @@
 from ._amp_foreach_non_finite_check_and_unscale_ import (
     _amp_foreach_non_finite_check_and_unscale_,
 )
-from ._conj import _conj
 from ._flash_attention_forward import _flash_attention_forward
 
 # Hygon internal implementation for attention
@@ -96,7 +95,6 @@ from .int_mm import int_mm, int_mm_out
 from .isin import isin
 from .jagged_to_padded_dense_forward import jagged_to_padded_dense_forward
 from .lcm import lcm, lcm_
-from .lift_fresh import lift_fresh
 from .linalg_ldl_factor import ldl_factor, linalg_ldl_factor
 from .linalg_lstsq import linalg_lstsq
 from .linalg_matrix_norm import linalg_matrix_norm, linalg_matrix_norm_out
@@ -202,7 +200,6 @@ from .weight_norm import (
 
 __all__ = [
     "_amp_foreach_non_finite_check_and_unscale_",
-    "_conj",
     "_flash_attention_forward",
     "_scaled_dot_product_flash_attention",
     "_thnn_fused_lstm_cell",
@@ -273,7 +270,6 @@ __all__ = [
     "lcm",
     "lcm_",
     "ldl_factor",
-    "lift_fresh",
     "linalg_ldl_factor",
     "linalg_lstsq",
     "linalg_matrix_norm",

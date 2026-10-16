@@ -35,20 +35,3 @@ def test_conj(shape, dtype):
     res_out = flag_gems.conj(inp)
 
     utils.gems_assert_close(res_out, ref_out, dtype)
-
-
-@pytest.mark.underscore_conj
-@pytest.mark.parametrize("shape", [(256,), (32, 64), (2, 3, 4)])
-# _conj only operates on complex dtypes (FLOAT_DTYPES/INT_DTYPES not applicable)
-@pytest.mark.parametrize("dtype", utils.COMPLEX_DTYPES)
-def test__conj(shape, dtype):
-    # Create complex input
-    real = torch.randn(shape, dtype=torch.float32, device=flag_gems.device)
-    imag = torch.randn(shape, dtype=torch.float32, device=flag_gems.device)
-    inp = torch.complex(real, imag).to(dtype)
-    ref_inp = utils.to_reference(inp)
-
-    ref_out = torch._conj(ref_inp)
-    res_out = flag_gems._conj(inp)
-
-    utils.gems_assert_close(res_out, ref_out, dtype)
